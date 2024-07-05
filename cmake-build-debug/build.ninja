@@ -70,6 +70,13 @@ build CMakeFiles/particles.dir/window.c.o: C_COMPILER__particles_unscanned_Debug
   OBJECT_DIR = CMakeFiles/particles.dir
   OBJECT_FILE_DIR = CMakeFiles/particles.dir
 
+build CMakeFiles/particles.dir/square.c.o: C_COMPILER__particles_unscanned_Debug /Users/filip/CLionProjects/particles/square.c || cmake_object_order_depends_target_particles
+  DEP_FILE = CMakeFiles/particles.dir/square.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.30.4/include -isystem /opt/homebrew/Cellar/sdl2/2.30.4/include/SDL2
+  OBJECT_DIR = CMakeFiles/particles.dir
+  OBJECT_FILE_DIR = CMakeFiles/particles.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target particles
@@ -78,7 +85,7 @@ build CMakeFiles/particles.dir/window.c.o: C_COMPILER__particles_unscanned_Debug
 #############################################
 # Link the executable particles
 
-build particles: C_EXECUTABLE_LINKER__particles_Debug CMakeFiles/particles.dir/main.c.o CMakeFiles/particles.dir/particle.c.o CMakeFiles/particles.dir/window.c.o | /opt/homebrew/Cellar/sdl2/2.30.4/lib/libSDL2.dylib
+build particles: C_EXECUTABLE_LINKER__particles_Debug CMakeFiles/particles.dir/main.c.o CMakeFiles/particles.dir/particle.c.o CMakeFiles/particles.dir/window.c.o CMakeFiles/particles.dir/square.c.o | /opt/homebrew/Cellar/sdl2/2.30.4/lib/libSDL2.dylib
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/Cellar/sdl2/2.30.4/lib  /opt/homebrew/Cellar/sdl2/2.30.4/lib/libSDL2.dylib
   LINK_PATH = -L/opt/homebrew/Cellar/sdl2/2.30.4/lib

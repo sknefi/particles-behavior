@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 SDL_Window	*create_window(const int x, const int y) {
-	SDL_Window* window = SDL_CreateWindow("SDL Tutorial",
+	SDL_Window* window = SDL_CreateWindow("PARTICLES",
 									  SDL_WINDOWPOS_UNDEFINED,
 									  SDL_WINDOWPOS_UNDEFINED,
 									  x,

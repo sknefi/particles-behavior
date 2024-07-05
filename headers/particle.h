@@ -13,7 +13,8 @@ typedef struct {
 	float   r;
 } Particle;
 
-Particle	init_part(float x, float y, float vx, float vy, float r);
+Particle	init_particle(float x, float y, float vx, float vy, float r);
 void		show_particle(Particle particle);
+
 
 #endif //PARTICLE_H

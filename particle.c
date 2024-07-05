@@ -10,7 +10,7 @@ typedef struct {
 	float   r;
 } Particle;
 
-Particle	init_part(float x, float y, float vx, float vy, float r) {
+Particle	init_particle(float x, float y, float vx, float vy, float r) {
 	Particle	new_part;
 
 	new_part.x = x;
@@ -28,4 +28,3 @@ void	show_particle(Particle particle) {
 	printf("vx:%f\t\t\tvy:%f\n", particle.vx, particle.vy);
 	printf("------------------------------------------\n");
 }
-
