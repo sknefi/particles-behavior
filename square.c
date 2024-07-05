@@ -5,10 +5,12 @@
 typedef struct {
 	float				x;
 	float				y;
+	float				vx;
+	float				vy;
 	unsigned int		size;
 } Square;
 
-Square	init_square(float x, float y, unsigned int size) {
+Square	init_square(float x, float y, float vx, float vy, unsigned int size) {
 	Square square;
 
 	square.x = x;

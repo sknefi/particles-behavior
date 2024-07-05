@@ -1,17 +1,13 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 
-#include "./headers/particle.h"
 #include "./headers/window.h"
-#include "./headers/square.h"
+#include "headers/situations.h"
 
 typedef int bool_t;
 
 int		main (void) {
 	bool_t			quit;
-	Square			square1;
-	Square			square2;
-	Particle		particle;
 	SDL_Event		event;
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
@@ -32,10 +28,6 @@ int		main (void) {
 		SDL_DestroyWindow(window);
 		SDL_Quit();
 	}
-	particle = init_particle(100.0f, 100.0f, 0.0f, 0.0f, 10.0f);
-	show_particle(particle);
-	square1 = init_square(150.0f, 140.0f, 30);
-	square2 = init_square(400.0f, 500.0f, 300);
 
 	quit = 0;
 	while (!quit) {
@@ -48,10 +40,8 @@ int		main (void) {
 		SDL_SetRenderDrawColor(renderer, 11, 57, 84, 255);
 		SDL_RenderClear(renderer);
 
-
-		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-		draw_square_mid(renderer, square1);
-		draw_square_tl(renderer, square2);
+		//situation0(renderer);
+		situation1(renderer);
 
 		SDL_RenderPresent(renderer);
 
