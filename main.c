@@ -32,7 +32,7 @@ int		main (void) {
 	}
 
 	// FOR TESTS
-	Particle particle_sit3 = init_particle(100.0f, 100.0f, 1.0f, 1.0f, 0.000004f, 0.000004f, 40.0f);
+	Particle particle_sit3 = init_particle(100.0f, 140.0f, 1.4f, 1.2f, 0.00004f, 0.00004f, 80.0f);
 	// END FOR TESTS
 
 	quit = 0;
@@ -58,7 +58,7 @@ int		main (void) {
 		// 1000ms / 60 = 16.667
 		// we want to have 60fps, so we need to calculate how fast should be one frame in 1second if we want
 		// to have 60 frames in that second => 1s / 60frames = 0.016667s = 16.67ms
-		SDL_Delay(dt);
+		SDL_Delay(16.6);
 	}
 	return (0);
 }

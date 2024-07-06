@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
+#include "./headers/window.h"
 
 typedef struct {
 	float   x;
@@ -66,4 +67,15 @@ void	gravity_of_circle(Particle *particle, const float dt) {
 	particle->vy = particle->vy + (particle->ay * dt);
 	particle->x = particle->x + (particle->vx * dt);
 	particle->y = particle->y + (particle->vy * dt);
+}
+
+void	collision_wall_detection(Particle *particle) {
+	// collision with left or right wall (X-axis)
+	if ((particle->x - particle->r < 0) || (particle->x + particle->r > WINDOW_WIDTH)) {
+		particle->vx = -particle->vx;
+	}
+	if ((particle->y - particle->r < 0) || (particle->y + particle->r > WINDOW_HEIGHT)) {
+		particle->vy = -particle->vy;
+	}
+
 }

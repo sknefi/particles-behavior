@@ -41,4 +41,5 @@ void	situation3(SDL_Renderer *renderer, Particle *particle) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	draw_particle(renderer, *particle);
 	gravity_of_circle(particle, 16.6f);
+	collision_wall_detection(particle);
 }
