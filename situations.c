@@ -37,12 +37,8 @@ void	situation2(SDL_Renderer *renderer) {
 }
 
 // testing gravity
-void	situation3(SDL_Renderer *renderer) {
-	Particle particle;
-
-	particle = init_particle(100.0f, 100.0f, 4.0f, 4.0f, 3.0f, 3.0f, 40.0f);
+void	situation3(SDL_Renderer *renderer, Particle *particle) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-	draw_particle(renderer, particle);
-	gravity_of_circle(&particle, 16.6);
-
+	draw_particle(renderer, *particle);
+	gravity_of_circle(particle, 16.6f);
 }

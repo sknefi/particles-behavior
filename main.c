@@ -4,6 +4,7 @@
 #include "./headers/window.h"
 #include "./headers/situations.h"
 #include "./headers/constants.h"
+#include "./headers/particle.h"
 
 typedef int bool_t;
 
@@ -30,6 +31,10 @@ int		main (void) {
 		SDL_Quit();
 	}
 
+	// FOR TESTS
+	Particle particle_sit3 = init_particle(100.0f, 100.0f, 1.0f, 1.0f, 0.000004f, 0.000004f, 40.0f);
+	// END FOR TESTS
+
 	quit = 0;
 	while (!quit) {
 		while (SDL_PollEvent(&event) != 0) {
@@ -45,7 +50,7 @@ int		main (void) {
 		//situation0(renderer);
 		//situation1(renderer);
 		//situation2(renderer);
-		situation3(renderer);
+		situation3(renderer, &particle_sit3);
 
 		SDL_RenderPresent(renderer);
 
