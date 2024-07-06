@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <SDL2/SDL.h>
 
 typedef struct {
@@ -7,16 +6,20 @@ typedef struct {
 	float   y;
 	float   vx;
 	float   vy;
+	float	ax;
+	float	ay;
 	float   r;
 } Particle;
 
-Particle	init_particle(float x, float y, float vx, float vy, float r) {
+Particle	init_particle(float x, float y, float vx, float vy, float ax, float ay, float r) {
 	Particle	new_part;
 
 	new_part.x = x;
 	new_part.y = y;
 	new_part.vx = vx;
 	new_part.vy = vy;
+	new_part.ax = ax;
+	new_part.ay = ay;
 	new_part.r = r;
 	return (new_part);
 }
@@ -26,10 +29,11 @@ void	show_particle(Particle particle) {
 	printf("r:%f\n", particle.r);
 	printf("x:%f\t\ty:%f\n", particle.x, particle.y);
 	printf("vx:%f\t\t\tvy:%f\n", particle.vx, particle.vy);
+	printf("vx:%f\t\t\tvy:%f\n", particle.ax, particle.ay);
 	printf("------------------------------------------\n");
 }
 
-void draw_circle(SDL_Renderer *renderer, Particle particle) {
+void	draw_particle(SDL_Renderer *renderer, Particle particle) {
 	int			x = (particle.r - 1);
 	int			y = 0;
 	int			tx = 1;
@@ -55,4 +59,11 @@ void draw_circle(SDL_Renderer *renderer, Particle particle) {
 			error += (tx - diameter);
 		}
 	}
+}
+
+void	gravity_of_circle(Particle *particle, const float dt) {
+	particle->vx = particle->vx + (particle->ax * dt);
+	particle->vy = particle->vy + (particle->ay * dt);
+	particle->x = particle->x + (particle->vx * dt);
+	particle->y = particle->y + (particle->vy * dt);
 }

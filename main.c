@@ -2,7 +2,8 @@
 #include <SDL2/SDL.h>
 
 #include "./headers/window.h"
-#include "headers/situations.h"
+#include "./headers/situations.h"
+#include "./headers/constants.h"
 
 typedef int bool_t;
 
@@ -40,9 +41,11 @@ int		main (void) {
 		SDL_SetRenderDrawColor(renderer, 11, 57, 84, 255);
 		SDL_RenderClear(renderer);
 
+		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 		//situation0(renderer);
 		//situation1(renderer);
-		situation2(renderer);
+		//situation2(renderer);
+		situation3(renderer);
 
 		SDL_RenderPresent(renderer);
 
@@ -50,9 +53,7 @@ int		main (void) {
 		// 1000ms / 60 = 16.667
 		// we want to have 60fps, so we need to calculate how fast should be one frame in 1second if we want
 		// to have 60 frames in that second => 1s / 60frames = 0.016667s = 16.67ms
-		SDL_Delay(16);
+		SDL_Delay(dt);
 	}
-
-
 	return (0);
 }
