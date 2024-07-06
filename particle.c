@@ -28,3 +28,31 @@ void	show_particle(Particle particle) {
 	printf("vx:%f\t\t\tvy:%f\n", particle.vx, particle.vy);
 	printf("------------------------------------------\n");
 }
+
+void draw_circle(SDL_Renderer *renderer, Particle particle) {
+	int			x = (particle.r - 1);
+	int			y = 0;
+	int			tx = 1;
+	int			ty = 1;
+	const int	diameter = (particle.r * 2);
+	int			error = (tx - diameter);
+
+	while (x >= y) {
+		SDL_RenderDrawLine(renderer, particle.x - x, particle.y - y, particle.x + x, particle.y - y);
+		SDL_RenderDrawLine(renderer, particle.x - x, particle.y + y, particle.x + x, particle.y + y);
+		SDL_RenderDrawLine(renderer, particle.x - y, particle.y - x, particle.x + y, particle.y - x);
+		SDL_RenderDrawLine(renderer, particle.x - y, particle.y + x, particle.x + y, particle.y + x);
+
+		if (error <= 0) {
+			++y;
+			error += ty;
+			ty += 2;
+		}
+
+		if (error > 0) {
+			--x;
+			tx += 2;
+			error += (tx - diameter);
+		}
+	}
+}

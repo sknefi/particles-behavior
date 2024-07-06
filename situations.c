@@ -22,3 +22,16 @@ void	situation1(SDL_Renderer *renderer) {
 	draw_square_mid(renderer, square1);
 	draw_square_tl(renderer, square2);
 }
+
+// displaying particles
+void	situation2(SDL_Renderer *renderer) {
+	Particle	particle1;
+	Particle	particle2;
+
+
+	particle1 = init_particle(100.0f, 100.0f, 0.0f, 0.0f, 40.0f);
+	particle2 = init_particle(400.0f, 300.0f, 0.0f, 0.0f, 100.0f);
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	draw_circle(renderer, particle1);
+	draw_circle(renderer, particle2);
+}

@@ -15,6 +15,6 @@ typedef struct {
 
 Particle	init_particle(float x, float y, float vx, float vy, float r);
 void		show_particle(Particle particle);
-
+void		draw_circle(SDL_Renderer *renderer, Particle particle);
 
 #endif //PARTICLE_H

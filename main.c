@@ -41,7 +41,8 @@ int		main (void) {
 		SDL_RenderClear(renderer);
 
 		//situation0(renderer);
-		situation1(renderer);
+		//situation1(renderer);
+		situation2(renderer);
 
 		SDL_RenderPresent(renderer);
 
