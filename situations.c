@@ -2,6 +2,9 @@
 
 #include "headers/particle.h"
 #include "headers/square.h"
+#include "headers/all_particles.h"
+
+const float		dt1 = 16.6f;
 
 // testing particle
 void	situation0(SDL_Renderer *renderer) {
@@ -36,10 +39,15 @@ void	situation2(SDL_Renderer *renderer) {
 	draw_particle(renderer, particle2);
 }
 
-// testing gravity
+// testing gravity and collisions
 void	situation3(SDL_Renderer *renderer, Particle *particle) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	draw_particle(renderer, *particle);
-	gravity_of_circle(particle, 16.6f);
+	gravity_of_particle(particle, dt1);
 	collision_wall_detection(particle);
+}
+
+// testing update() -> function that will be called to render each frame
+void	situation4(SDL_Renderer *renderer) {
+	update_all_particles(renderer, dt1);
 }

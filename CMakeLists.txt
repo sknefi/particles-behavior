@@ -19,7 +19,9 @@ add_executable(particles main.c
         headers/square.h
         situations.c
         headers/situations.h
-        headers/constants.h)
+        headers/constants.h
+        storage/all_particles.c
+        headers/all_particles.h)
 
 # Link SDL2 library to the executable
 target_link_libraries(particles ${SDL2_LIBRARIES})

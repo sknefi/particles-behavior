@@ -5,6 +5,7 @@
 #include "./headers/situations.h"
 #include "./headers/constants.h"
 #include "./headers/particle.h"
+#include "./headers/all_particles.h"
 
 typedef int bool_t;
 
@@ -12,6 +13,7 @@ int		main (void) {
 	bool_t			quit;
 	SDL_Event		event;
 	SDL_Window		*window;
+	SDL_Texture		*text_texture;
 	SDL_Renderer	*renderer;
 
 
@@ -32,7 +34,12 @@ int		main (void) {
 	}
 
 	// FOR TESTS
-	Particle particle_sit3 = init_particle(100.0f, 140.0f, 1.4f, 1.2f, 0.00004f, 0.00004f, 80.0f);
+
+	// situation3
+		Particle particle_sit3 = init_particle(100.0f, 140.0f, 0.4f, 1.2f, 0.0000f, 0.0000f, 80.0f);
+	// situation4
+		init_all_particles();
+
 	// END FOR TESTS
 
 	quit = 0;
@@ -50,7 +57,8 @@ int		main (void) {
 		//situation0(renderer);
 		//situation1(renderer);
 		//situation2(renderer);
-		situation3(renderer, &particle_sit3);
+		//situation3(renderer, &particle_sit3);
+		situation4(renderer);
 
 		SDL_RenderPresent(renderer);
 
@@ -58,7 +66,7 @@ int		main (void) {
 		// 1000ms / 60 = 16.667
 		// we want to have 60fps, so we need to calculate how fast should be one frame in 1second if we want
 		// to have 60 frames in that second => 1s / 60frames = 0.016667s = 16.67ms
-		SDL_Delay(16.6);
+		SDL_Delay(dt);
 	}
 	return (0);
 }

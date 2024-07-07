@@ -62,7 +62,7 @@ void	draw_particle(SDL_Renderer *renderer, Particle particle) {
 	}
 }
 
-void	gravity_of_circle(Particle *particle, const float dt) {
+void	gravity_of_particle(Particle *particle, const float dt) {
 	particle->vx = particle->vx + (particle->ax * dt);
 	particle->vy = particle->vy + (particle->ay * dt);
 	particle->x = particle->x + (particle->vx * dt);
@@ -79,3 +79,4 @@ void	collision_wall_detection(Particle *particle) {
 	}
 
 }
+
