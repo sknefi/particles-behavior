@@ -43,11 +43,15 @@ void	situation2(SDL_Renderer *renderer) {
 void	situation3(SDL_Renderer *renderer, Particle *particle) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	draw_particle(renderer, *particle);
-	gravity_of_particle(particle, dt1);
+	movement_of_particle(particle, dt1);
 	collision_wall_detection(particle);
 }
 
 // testing update() -> function that will be called to render each frame
 void	situation4(SDL_Renderer *renderer) {
-	update_all_particles(renderer, dt1);
+	update_all_particles_sit4(renderer, dt1);
+}
+
+void	situation5(SDL_Renderer *renderer) {
+	update_all_particles_sit5(renderer, dt1);
 }

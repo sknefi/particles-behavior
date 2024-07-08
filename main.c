@@ -58,7 +58,8 @@ int		main (void) {
 		//situation1(renderer);
 		//situation2(renderer);
 		//situation3(renderer, &particle_sit3);
-		situation4(renderer);
+		//situation4(renderer);
+		situation5(renderer);
 
 		SDL_RenderPresent(renderer);
 

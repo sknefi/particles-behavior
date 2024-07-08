@@ -62,7 +62,7 @@ void	draw_particle(SDL_Renderer *renderer, Particle particle) {
 	}
 }
 
-void	gravity_of_particle(Particle *particle, const float dt) {
+void	movement_of_particle(Particle *particle, const float dt) {
 	particle->vx = particle->vx + (particle->ax * dt);
 	particle->vy = particle->vy + (particle->ay * dt);
 	particle->x = particle->x + (particle->vx * dt);
@@ -80,3 +80,38 @@ void	collision_wall_detection(Particle *particle) {
 
 }
 
+float	distance_between_two_particles(Particle particle1, Particle particle2) {
+	float	dx = particle1.x - particle2.x;
+	float	dy = particle1.y - particle2.y;
+
+	return (sqrtf((dx * dx) + (dy * dy )));
+}
+
+void	collision_particle_detection(Particle particles[], int count_of_particles) {
+	int		i;
+	int		j;
+	float	distance;
+
+	i = 0;
+	while (i < count_of_particles) {
+		j = i + 1;
+		while (j < count_of_particles) {
+			// distance between two particles
+			distance = distance_between_two_particles(particles[i], particles[j]);
+			// collision of two particles
+			if (distance <= (particles[i].r + particles[j].r)) {
+				particles[i].vx = ( ((particles[i].vx * (particles[i].r - particles[j].r)) + (2 * particles[j].r * particles[j].vx))
+										/ (particles[i].r + particles[j].r));
+				particles[i].vy = ( ( (particles[i].vy * (particles[i].r - particles[j].r)) + (2 * particles[j].r * particles[j].vy) )
+						/ (particles[i].r + particles[j].r));
+
+				particles[j].vx = ( ((particles[j].vx * (particles[j].r - particles[i].r)) + (2 * particles[i].r * particles[i].vx))
+						/ (particles[i].r + particles[j].r));
+				particles[j].vy = ( ( (particles[j].vy * (particles[j].r - particles[i].r)) + (2 * particles[i].r * particles[i].vy) )
+						/ (particles[i].r + particles[j].r));
+			}
+			j++;
+		}
+		i++;
+	}
+}
