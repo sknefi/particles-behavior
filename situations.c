@@ -52,6 +52,12 @@ void	situation4(SDL_Renderer *renderer) {
 	update_all_particles_sit4(renderer, dt1);
 }
 
+// testing collision of all particles
 void	situation5(SDL_Renderer *renderer) {
 	update_all_particles_sit5(renderer, dt1);
+}
+
+// testing collision of all particles
+void	situation6(SDL_Renderer *renderer) {
+	update_random_particles_sit6(renderer, dt1);
 }
