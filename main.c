@@ -39,8 +39,8 @@ int		main (void) {
 		Particle particle_sit3 = init_particle(100.0f, 140.0f, 0.4f, 1.2f, 0.0000f, 0.0000f, 80.0f);
 	// situation4, situation5
 		//init_all_particles();
-	// situation6
-		init_random_particles();
+	// situation5
+		init_random_particles(); //- sometimes it is bugging
 
 	// END FOR TESTS
 
@@ -61,8 +61,7 @@ int		main (void) {
 		//situation2(renderer);
 		//situation3(renderer, &particle_sit3);
 		//situation4(renderer);
-		//situation5(renderer);
-		situation6(renderer);
+		situation5(renderer);
 
 		SDL_RenderPresent(renderer);
 

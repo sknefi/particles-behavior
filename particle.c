@@ -70,12 +70,28 @@ void	movement_of_particle(Particle *particle, const float dt) {
 }
 
 void	collision_wall_detection(Particle *particle) {
+	// #h1000 = sometimes was particle stucked in wall
+	//		- either it spawned there
+	//		- or other ball pushed ball so hard to wall it stayed there
+
 	// collision with left or right wall (X-axis)
-	if ((particle->x - particle->r < 0) || (particle->x + particle->r > WINDOW_WIDTH)) {
+	if (particle->x - particle->r < 0) {
 		particle->vx = -particle->vx;
+		particle->x = 0 + particle->r; // #h1000
 	}
-	if ((particle->y - particle->r < 0) || (particle->y + particle->r > WINDOW_HEIGHT)) {
+	if ((particle->x + particle->r > WINDOW_WIDTH)){
+		particle->vx = -particle->vx;
+		particle->x = WINDOW_WIDTH - particle->r; // #h1000
+	}
+
+	// collision with top or bottom wall (Y-axis)
+	if (particle->y - particle->r < 0) {
 		particle->vy = -particle->vy;
+		particle->y = 0 + particle->r; // #h1000
+	}
+	if (particle->y + particle->r > WINDOW_HEIGHT) {
+		particle->vy = -particle->vy;
+		particle->y = WINDOW_HEIGHT - particle->r; // #h1000
 	}
 
 }
@@ -93,9 +109,9 @@ float	skalar_product_of_vectors(float a, float b, float c, float d) {
 
 // handle collision after touch of a two particles
 void collision_particle_detection(Particle particles[], int count_of_particles) {
-    int i;
-    int j;
-    float distance;
+    int			i;
+    int			j;
+    float		distance;
 
     i = 0;
     while (i < count_of_particles) {
@@ -145,3 +161,4 @@ void collision_particle_detection(Particle particles[], int count_of_particles) 
         i++;
     }
 }
+
