@@ -1,6 +1,3 @@
-//
-// Created by Filip Karika on 04/07/2024.
-//
 
 # ifndef WINDOW_H
 # define WINDOW_H

@@ -19,8 +19,8 @@ void	situation1(SDL_Renderer *renderer) {
 	Square	square1;
 	Square	square2;
 
-	square1 = init_square(150.0f, 140.0f, 5.0f, 4.0f, 30);
-	square2 = init_square(400.0f, 500.0f, 5.0f, 4.0f, 300);
+	square1 = init_square(150.0f, 140.0f, 5.0f, 4.0f, 30.0f);
+	square2 = init_square(400.0f, 500.0f, 5.0f, 4.0f, 300.0f);
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	draw_square_mid(renderer, square1);
 	draw_square_tl(renderer, square2);
@@ -55,4 +55,8 @@ void	situation4(SDL_Renderer *renderer) {
 // testing collision of all particles (walls and other particles)
 void	situation5(SDL_Renderer *renderer) {
 	update_all_particles_sit5(renderer, dt1);
+}
+
+void	situation6(SDL_Renderer *renderer, Square squares[]) {
+
 }

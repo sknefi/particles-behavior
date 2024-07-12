@@ -3,29 +3,31 @@
 #include <SDL2/SDL.h>
 
 typedef struct {
-	float				x;
-	float				y;
-	float				vx;
-	float				vy;
-	unsigned int		size;
+	float			x;
+	float			y;
+	float			vx;
+	float			vy;
+	float			size;
 } Square;
 
-Square	init_square(float x, float y, float vx, float vy, unsigned int size) {
+Square	init_square(float x, float y, float vx, float vy, float size) {
 	Square square;
 
 	square.x = x;
 	square.y = y;
+	square.vx = vx;
+	square.vy = vy;
 	square.size = size;
 	return  (square);
 }
 
 void	draw_square_tl(SDL_Renderer *renderer, Square square) {
-	unsigned int	i;
-	unsigned int	j;
+	float		i;
+	float		j;
 
-	i = 0;
+	i = 0.0f;
 	while (i < square.size) {
-		j = 0;
+		j = 0.0f;
 		while (j < square.size) {
 			SDL_RenderDrawPoint(renderer, square.x + i, square.y + j);
 			j++;
@@ -35,12 +37,13 @@ void	draw_square_tl(SDL_Renderer *renderer, Square square) {
 }
 
 void	draw_square_mid(SDL_Renderer *renderer, Square square) {
-	int		i;
-	int		j;
+	float		i;
+	float		j;
 
-	i = 0;
+	i = 0.0f;
+	SDL_SetRenderDrawColor(renderer, 239, 118, 122, 255);
 	while (i < square.size) {
-		j = 0;
+		j = 0.0f;
 		while (j < square.size) {
 			SDL_RenderDrawPoint(renderer, square.x - (square.size / 2) + i, square.y - (square.size / 2) + j);
 			j++;

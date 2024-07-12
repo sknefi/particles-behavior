@@ -6,6 +6,8 @@
 #include "./headers/constants.h"
 #include "./headers/particle.h"
 #include "./headers/all_particles.h"
+#include "./headers/all_squares.h"
+#include "headers/square.h"
 
 typedef int bool_t;
 
@@ -37,10 +39,13 @@ int		main (void) {
 
 	// situation3
 		Particle particle_sit3 = init_particle(100.0f, 140.0f, 0.4f, 1.2f, 0.0000f, 0.0000f, 80.0f);
-	// situation4, situation5
+	// init only testing particles
 		//init_all_particles();
-	// situation5
-		init_random_particles(); //- sometimes it is bugging
+	// init random count of particles with random values
+		init_random_particles();
+
+	Square *squares = init_all_squares();
+	print_squares();
 
 	// END FOR TESTS
 
@@ -55,18 +60,18 @@ int		main (void) {
 		SDL_SetRenderDrawColor(renderer, 11, 57, 84, 255);
 		SDL_RenderClear(renderer);
 
-		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 		//situation0(renderer);
 		//situation1(renderer);
 		//situation2(renderer);
 		//situation3(renderer, &particle_sit3);
 		//situation4(renderer);
-		situation5(renderer);
+		//situation5(renderer);
+		situation6(renderer);
 
 		SDL_RenderPresent(renderer);
 
 		// approximately 60fps
-		// 1000ms / 60 = 16.667
+		// 1000ms / 60 = 16.667 (dt is saved in constatns.h)
 		// we want to have 60fps, so we need to calculate how fast should be one frame in 1second if we want
 		// to have 60 frames in that second => 1s / 60frames = 0.016667s = 16.67ms
 		SDL_Delay(dt);

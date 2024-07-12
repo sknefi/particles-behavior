@@ -2,6 +2,8 @@
 #include <time.h>
 #include "../headers/all_particles.h"
 #include "../headers/particle.h"
+#include "../headers/all_squares.h"
+#include "../headers/square.h"
 
 const int min_particles = 20;
 const int max_particles = 40;
@@ -39,6 +41,7 @@ void	update_all_particles_sit4(SDL_Renderer *renderer, float dt) {
 	int		i;
 
 	i = 0;
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	while (i < count_of_particles) {
 		draw_particle(renderer, particles[i]);
 		movement_of_particle(&particles[i], dt);
@@ -54,6 +57,22 @@ void	update_all_particles_sit5(SDL_Renderer *renderer, float dt) {
 	int		i;
 
 	i = 0;
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	while (i < count_of_particles) {
+		draw_particle(renderer, particles[i]);
+		movement_of_particle(&particles[i], dt);
+		collision_wall_detection(&particles[i]);
+		collision_particle_detection(particles, count_of_particles);
+		i++;
+	}
+}
+
+// wall and particle detection
+void	update_all_particles_sit6(SDL_Renderer *renderer, Square squares[], float dt) {
+	int		i;
+
+	i = 0;
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	while (i < count_of_particles) {
 		draw_particle(renderer, particles[i]);
 		movement_of_particle(&particles[i], dt);
