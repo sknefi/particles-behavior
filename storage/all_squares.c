@@ -1,10 +1,11 @@
+#include <SDL2/SDL.h>
 #include <stdlib.h>
 #include <time.h>
 #include "../headers/square.h"
 #include "../headers/window.h"
 
 const int min_squares = 3;
-const int max_squares = 6;
+const int max_squares = 10;
 Square squares[max_squares];
 int square_count;
 
@@ -48,6 +49,16 @@ void	print_squares() {
 	int i = 0;
 	while (!is_null_term_square(squares[i])) {
 		printf("Square %d: Position (%.2f, %.2f), Size: %.2f\n", i, squares[i].x, squares[i].y, squares[i].size);
+		i++;
+	}
+}
+
+void	draw_squares(SDL_Renderer *renderer, Square squares[]) {
+	int		i;
+
+	i = 0;
+	while (!is_null_term_square(squares[i])) {
+		draw_square_tl(renderer, squares[i]);
 		i++;
 	}
 }

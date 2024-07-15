@@ -26,6 +26,7 @@ void	draw_square_tl(SDL_Renderer *renderer, Square square) {
 	float		j;
 
 	i = 0.0f;
+	SDL_SetRenderDrawColor(renderer, 239, 118, 122, 255);
 	while (i < square.size) {
 		j = 0.0f;
 		while (j < square.size) {

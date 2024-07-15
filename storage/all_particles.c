@@ -6,7 +6,7 @@
 #include "../headers/square.h"
 
 const int min_particles = 20;
-const int max_particles = 40;
+const int max_particles = 30;
 Particle particles[max_particles];
 int count_of_particles = 6;
 

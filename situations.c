@@ -3,6 +3,7 @@
 #include "headers/particle.h"
 #include "headers/square.h"
 #include "headers/all_particles.h"
+#include "headers/all_squares.h"
 
 const float		dt1 = 16.6f;
 
@@ -57,6 +58,9 @@ void	situation5(SDL_Renderer *renderer) {
 	update_all_particles_sit5(renderer, dt1);
 }
 
+// displaying squares
 void	situation6(SDL_Renderer *renderer, Square squares[]) {
-
+	draw_squares(renderer, squares);
+	// collision_particles_squares(renderer, squares);
+	update_all_particles_sit6(renderer, squares, dt1);
 }

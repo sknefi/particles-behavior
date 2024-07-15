@@ -43,8 +43,12 @@ int		main (void) {
 		//init_all_particles();
 	// init random count of particles with random values
 		init_random_particles();
+	// init only testing particles
+		//Square *squares = init_all_squares();
+	// init random count of particles with random values
+		Square *squares = init_random_squares();
 
-	Square *squares = init_all_squares();
+
 	print_squares();
 
 	// END FOR TESTS
@@ -66,7 +70,7 @@ int		main (void) {
 		//situation3(renderer, &particle_sit3);
 		//situation4(renderer);
 		//situation5(renderer);
-		situation6(renderer);
+		situation6(renderer, squares);
 
 		SDL_RenderPresent(renderer);
 

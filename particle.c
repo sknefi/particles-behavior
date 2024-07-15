@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include "./headers/window.h"
+#include "./headers/square.h"
 
 typedef struct {
 	float   x;
@@ -108,7 +109,7 @@ float	skalar_product_of_vectors(float a, float b, float c, float d) {
 }
 
 // handle collision after touch of a two particles
-void collision_particle_detection(Particle particles[], int count_of_particles) {
+void	collision_particle_detection(Particle particles[], int count_of_particles) {
     int			i;
     int			j;
     float		distance;
@@ -162,3 +163,6 @@ void collision_particle_detection(Particle particles[], int count_of_particles) 
     }
 }
 
+void	collision_square_detection(Particle *particle, Square squares[]) {
+
+}
