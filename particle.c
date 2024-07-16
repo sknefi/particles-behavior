@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include "./headers/window.h"
 #include "./headers/square.h"
+# include "./headers/all_squares.h"
 
 typedef struct {
 	float   x;
@@ -97,7 +98,7 @@ void	collision_wall_detection(Particle *particle) {
 
 }
 
-float	distance_between_two_particles(Particle particle1, Particle particle2) {
+float	distance_particles(Particle particle1, Particle particle2) {
 	float	dx = particle1.x - particle2.x;
 	float	dy = particle1.y - particle2.y;
 
@@ -109,7 +110,7 @@ float	skalar_product_of_vectors(float a, float b, float c, float d) {
 }
 
 // handle collision after touch of a two particles
-void	collision_particle_detection(Particle particles[], int count_of_particles) {
+void	collision_particles_detection(Particle particles[], int count_of_particles) {
     int			i;
     int			j;
     float		distance;
@@ -119,7 +120,7 @@ void	collision_particle_detection(Particle particles[], int count_of_particles) 
         j = i + 1;
         while (j < count_of_particles) {
             // Distance between two particles
-            distance = distance_between_two_particles(particles[i], particles[j]);
+            distance = distance_particles(particles[i], particles[j]);
             // Collision of two particles
             if (distance <= (particles[i].r + particles[j].r)) {
                 float	dx = particles[i].x - particles[j].x;
@@ -163,6 +164,28 @@ void	collision_particle_detection(Particle particles[], int count_of_particles) 
     }
 }
 
-void	collision_square_detection(Particle *particle, Square squares[]) {
+float	distance_particle_square(float x1, float y1, float x2, float y2) {
+	return sqrtf((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+}
 
+int		collision_particle_square(Particle particle, Square square) {
+	// Find the closest point on the square to the center of the circle
+	float nearestX = fmaxf(square.x, fminf(particle.x, square.x + square.size));
+	float nearestY = fmaxf(square.y, fminf(particle.y, square.y + square.size));
+	return (distance_particle_square(particle.x, particle.y, nearestX, nearestY) <= particle.r);
+}
+
+
+void	collision_square_detection(Particle *particle, Square squares[]) {
+	int		i;
+
+	i = 0;
+	while (!is_null_term_square(squares[i])) {
+		if (collision_particle_square(*particle, squares[i])) {
+			// Handle the collision (simple response: reverse direction)
+			particle->vx = -particle->vx;
+			particle->vy = -particle->vy;
+		}
+		i++;
+	}
 }

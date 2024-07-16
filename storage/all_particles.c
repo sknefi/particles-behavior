@@ -5,8 +5,8 @@
 #include "../headers/all_squares.h"
 #include "../headers/square.h"
 
-const int min_particles = 20;
-const int max_particles = 30;
+const int min_particles = 2;
+const int max_particles = 5;
 Particle particles[max_particles];
 int count_of_particles = 6;
 
@@ -62,12 +62,12 @@ void	update_all_particles_sit5(SDL_Renderer *renderer, float dt) {
 		draw_particle(renderer, particles[i]);
 		movement_of_particle(&particles[i], dt);
 		collision_wall_detection(&particles[i]);
-		collision_particle_detection(particles, count_of_particles);
+		collision_particles_detection(particles, count_of_particles);
 		i++;
 	}
 }
 
-// wall and particle detection
+// square and particle detection
 void	update_all_particles_sit6(SDL_Renderer *renderer, Square squares[], float dt) {
 	int		i;
 
@@ -77,7 +77,8 @@ void	update_all_particles_sit6(SDL_Renderer *renderer, Square squares[], float d
 		draw_particle(renderer, particles[i]);
 		movement_of_particle(&particles[i], dt);
 		collision_wall_detection(&particles[i]);
-		collision_particle_detection(particles, count_of_particles);
+		collision_particles_detection(particles, count_of_particles);
+		collision_square_detection(&particles[i], squares);
 		i++;
 	}
 }
