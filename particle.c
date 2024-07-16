@@ -170,22 +170,46 @@ float	distance_particle_square(float x1, float y1, float x2, float y2) {
 
 int		collision_particle_square(Particle particle, Square square) {
 	// Find the closest point on the square to the center of the circle
-	float nearestX = fmaxf(square.x, fminf(particle.x, square.x + square.size));
-	float nearestY = fmaxf(square.y, fminf(particle.y, square.y + square.size));
-	return (distance_particle_square(particle.x, particle.y, nearestX, nearestY) <= particle.r);
+	float nearest_x = fmaxf(square.x, fminf(particle.x, square.x + square.size));
+	float nearest_y = fmaxf(square.y, fminf(particle.y, square.y + square.size));
+	return (distance_particle_square(particle.x, particle.y, nearest_x, nearest_y) <= particle.r);
 }
 
+void	handle_collision_particle_square(Particle *particle, Square square) {
+	float nearest_x = fmaxf(square.x, fminf(particle->x, square.x + square.size));
+	float nearest_y = fmaxf(square.y, fminf(particle->y, square.y + square.size));
+	float delta_x = particle->x - nearest_x;
+	float delta_y = particle->y - nearest_y;
 
+	if (fabs(delta_x) > fabs(delta_y)) {
+		// Collision on the left or right side
+		particle->vx = -particle->vx;
+	} else if (fabs(delta_x) < fabs(delta_y)) {
+		// Collision on the top or bottom side
+		particle->vy = -particle->vy;
+	} else {
+		// Handle corner collision
+		particle->vx = -particle->vx;
+		particle->vy = -particle->vy;
+	}
+
+	// Move particle out of collision
+	float overlap = particle->r - distance_particle_square(particle->x, particle->y, nearest_x, nearest_y) + 1.0f; // Add a small value to prevent sticking
+	if (fabs(delta_x) > fabs(delta_y)) {
+		particle->x += (delta_x / fabs(delta_x)) * overlap;
+	} else {
+		particle->y += (delta_y / fabs(delta_y)) * overlap;
+	}
+}
+
+// handle collision after particle touched square
 void	collision_square_detection(Particle *particle, Square squares[]) {
 	int		i;
 
 	i = 0;
 	while (!is_null_term_square(squares[i])) {
-		if (collision_particle_square(*particle, squares[i])) {
-			// Handle the collision (simple response: reverse direction)
-			particle->vx = -particle->vx;
-			particle->vy = -particle->vy;
-		}
+		if (collision_particle_square(*particle, squares[i]))
+			handle_collision_particle_square(particle, squares[i]);
 		i++;
 	}
 }

@@ -5,8 +5,8 @@
 #include "../headers/all_squares.h"
 #include "../headers/square.h"
 
-const int min_particles = 2;
-const int max_particles = 5;
+const int min_particles = 3;
+const int max_particles = 10;
 Particle particles[max_particles];
 int count_of_particles = 6;
 

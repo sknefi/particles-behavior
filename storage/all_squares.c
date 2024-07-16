@@ -31,7 +31,7 @@ Square	*init_random_squares() {
 		float y = (float)(rand() % WINDOW_HEIGHT);
 		float vx = 0;
 		float vy = 0;
-		float size = (float)(rand() % 100);
+		float size = (float)(rand() % 110);
 
 		squares[i] = init_square(x, y, vx, vy, size);
 		i++;
