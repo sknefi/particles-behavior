@@ -54,7 +54,10 @@ int		main (void) {
 	// END FOR TESTS
 
 	quit = 0;
+	int c = 0;
 	while (!quit) {
+		// if (c++ > 50)
+		// 	dt = 400.0f;
 		while (SDL_PollEvent(&event) != 0) {
 			if (event.type == SDL_QUIT) {
 				quit = 1;

@@ -10,11 +10,11 @@ Square squares[max_squares];
 int square_count;
 
 Square	*init_all_squares() {
-	squares[0] = init_square(150.0f, 740.0f, 0.0f, 0.0f, 40.0f);
-	squares[1] = init_square(480.0f, 140.0f, 0.0f, 0.0f, 80.0f);
-	squares[2] = init_square(220.0f, 210.0f, 0.0f, 0.0f, 100.0f);
-	squares[3] = init_square(1000.0f, 850.0f, 0.0f, 0.0f, 20.0f);
-	squares[4] = init_square(30.0f, 440.0f, 0.0f, 0.0f, 50.0f);
+	squares[0] = init_square(0.0f, 0.0f, 0.0f, 0.0f, 40.0f);
+	// squares[1] = init_square(480.0f, 140.0f, 0.0f, 0.0f, 80.0f);
+	// squares[2] = init_square(220.0f, 210.0f, 0.0f, 0.0f, 100.0f);
+	// squares[3] = init_square(1000.0f, 850.0f, 0.0f, 0.0f, 20.0f);
+	// squares[4] = init_square(30.0f, 440.0f, 0.0f, 0.0f, 50.0f);
 	squares[5] = init_square(-10105.0f, 0.0f, 0.0f, 0.0f, -10105.0f); // null-terminated
 
 	return (squares);

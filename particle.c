@@ -80,22 +80,25 @@ void	collision_wall_detection(Particle *particle) {
 	if (particle->x - particle->r < 0) {
 		particle->vx = -particle->vx;
 		particle->x = 0 + particle->r; // #h1000
+		// printf("left: %p [%f, %f]\n", &particle, particle->x, particle->y);
 	}
 	if ((particle->x + particle->r > WINDOW_WIDTH)){
 		particle->vx = -particle->vx;
 		particle->x = WINDOW_WIDTH - particle->r; // #h1000
+		// printf("right: %p [%f, %f]\n", &particle, particle->x, particle->y);
 	}
 
 	// collision with top or bottom wall (Y-axis)
 	if (particle->y - particle->r < 0) {
 		particle->vy = -particle->vy;
 		particle->y = 0 + particle->r; // #h1000
+		printf("top: %p [%f, %f]\n", &particle, particle->x, particle->y);
 	}
 	if (particle->y + particle->r > WINDOW_HEIGHT) {
 		particle->vy = -particle->vy;
 		particle->y = WINDOW_HEIGHT - particle->r; // #h1000
+		// printf("bottom: %p [%f, %f]\n", &particle, particle->x, particle->y);
 	}
-
 }
 
 float	distance_particles(Particle particle1, Particle particle2) {
